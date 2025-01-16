@@ -12,15 +12,16 @@ I have found a *unoffical* Tempo API to fetch the color day of tomorrow. Everyda
 # Requirements
 
 My script was tested on Proxmox VE 8.+ (Debian 12.x). It can works on some older versions of Proxmox VE or Debian.
-> ⚠ **You need** to run all these commands as **root**! 
+> Make sure you have `curl`, `jq` and `at` installed on your machine. Otherwise you need to run `apt install curl jq at`.
+> 
+> ⚠ **You need** to run all commands as **root** user! 
 
 # Installation
 
-- Install these packages:
-```apt install curl jq at```
+## 1. Go to the good directory
 
-- Go to:
-```cd /usr/local/bin```
+Run `cd /usr/local/bin` to be in your scripts directory.
+
 And at the root of the directory, upload `tempo-autoshutdown.sh`
 
 > Make sure to run `chmod +x tempo-autoshutdown.sh` and add your Discord Webhook URL
