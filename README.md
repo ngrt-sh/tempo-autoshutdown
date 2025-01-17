@@ -12,37 +12,37 @@ I have found a *unoffical* Tempo API to fetch the color day of tomorrow. Everyda
 # Requirements
 
 My script was tested on Proxmox VE 8.+ (Debian 12.x). It can works on some older versions of Proxmox VE or Debian but it haven't tested for.
-> Make sure you have `curl`, `jq` and `at` installed on your machine. Otherwise you need to run `apt install curl jq at`.
-> 
 > ⚠ **You need** to be **root** user! 
+>
+> Make sure you have `curl`, `jq` and `at` installed on your machine. Otherwise you need to run `apt install curl jq at`.
 
 # Installation
 
 ## Upload script and setting up the permissions 
 
-1. Enter this command! `cd /usr/local/bin` to be in your scripts directory.
+1. Use the `cd /usr/local/bin` command to be in your scripts directory.
 
-      And at the root of the directory, upload `tempo-autoshutdown.sh`.
+2. After entering to the directory, upload (via SFTP) `tempo-autoshutdown.sh`. Modify the script file to add your Discord Webhook URL (do not modify other things than your Discord Webhook URL, only if you want make your proper version).
 
-      > Make sure to run `chmod +x /usr/local/bin/tempo-autoshutdown.sh` and add your Discord Webhook URL.
+3. Setting up the permissions by running `chmod +x /usr/local/bin/tempo-autoshutdown.sh`.
 
 ## Setting the cronjob
-For the script can be scheduled at 12h and/or at the startup of the server, we need to modify the crontab file.
+For the script can be scheduled at 12h and/or at the startup of the server, we need to modify the cronjobs file.
 
-1. Open the crontab editor by enter `crontab -e` command.
+1. Open the cronjobs editor by enter `crontab -e` command.
 
-2. Do not uncomment anything! We need just to add these two lines at the end of the crontab file:
+2.Just add these two lines at the end of the cronjob file:
 
 ```
 0 12 * * * /usr/local/bin/tempo-autoshutdown.sh
 @reboot /usr/local/bin/tempo-autoshutdown.sh
 ```
 
-3. After added these two lines in our cron file, save your file and exit nano or vim.
+3. After added these two lines in our cronjob file, save your file and exit *nano* or *vim*.
 
 ## Testing
 
-Before waiting a lot of time, I recommend you to run manually the script. It's not necessary but if you want check if the scheduled shutdown works.
+Before waiting a lot of time, I recommend you to run manually the script. It's not necessary but if you want check if the scheduled shutdown works great.
 
 1. Make sure your are in the `/usr/local/bin/` directory and be sure the script is executable.
 
