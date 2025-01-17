@@ -2,7 +2,7 @@
 
 # Variables
 API_URL="https://www.api-couleur-tempo.fr/api/jourTempo/tomorrow"
-DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1329200579859451946/NBuLL9WJksAGy6VwvoGz9vUHx4kLiDzbxPKSMyS_gRpPBULwulfSg3lJMKrZ5RpI8idh"
+DISCORD_WEBHOOK_URL="WEBHOOK URL"
 TIME_ZONE="Europe/Paris"
 LOG_FILE="/var/log/script-edf.log"
 
