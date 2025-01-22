@@ -51,11 +51,11 @@ main() {
 
   if [ "$code_jour" == "1" ]; then
     log "Demain est une journée bleue."
-    send_discord_notification 16777215 "⚪ Demain est une **journée bleue**. Le serveur restera allumé."
+    send_discord_notification 16777215 "🔵 Demain est une **journée bleue**. Le serveur restera allumé."
     cancel_shutdown_tasks
   elif [ "$code_jour" == "2" ]; then
     log "Demain est une journée blanche."
-    send_discord_notification 16776960 "🔵 Demain est une **journée blanche**. Le serveur restera allumé."
+    send_discord_notification 16776960 "⚪ Demain est une **journée blanche**. Le serveur restera allumé."
     cancel_shutdown_tasks
   elif [ "$code_jour" == "3" ]; then
     log "Demain est une journée rouge."
