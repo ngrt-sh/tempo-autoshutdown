@@ -59,7 +59,7 @@ main() {
     cancel_shutdown_tasks
   elif [ "$code_jour" == "3" ]; then
     log "Demain est une journée rouge."
-    send_discord_notification 16711680 "🔴 Demain est une **journée rouge**. Le serveur s'éteindra automatiquement à 6h du matin après les tâches de sauvegarde."
+    send_discord_notification 16711680 "🔴 Demain est une **journée rouge**. Le serveur s'éteindra automatiquement à **6h du matin après les tâches de sauvegarde**."
 
     log "Planification de l'arrêt du serveur à 6h demain matin."
     echo "sudo shutdown -h 06:00" | at 06:00 tomorrow 2>>"$LOG_FILE"
