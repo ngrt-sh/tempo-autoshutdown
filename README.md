@@ -3,7 +3,7 @@ A fully customizable Proxmox bash script that automatically shutdown the server 
 
 # Explanations and context of my script creation
 
-I created this bash script because I run a server in my homelab and also I live in France. In France, the main provider of electricity is EDF (Electricité De France) and we can have a contract called "Tempo". This contract provide us days called "Journée Bleue" (blue day), "Journée Blanche" (white day) and "Journée rouge" (red day). The red day is the worst day because the electricity price costs the most during peak hours (6 AM to 10 PM). So this is why I wanna make my own script to schedule automaticaly the power on and power off of my server.
+I created this bash script because I run a server in my homelab and also I live in France. In France, the main provider of electricity is **EDF** (**E**lectricité **D**e **F**rance) and we can have a contract called "Tempo". This contract provide us days called "Journée Bleue" (blue day), "Journée Blanche" (white day) and "Journée rouge" (red day). The red day is the worst day because the electricity price costs the most during peak hours (6h to 22h -- 6 AM to 10 PM). So this is why I wanna make my own script to schedule automaticaly the power off of my server and power on via RTC Clock feature in my BIOS/UEFI utility.
 
 # How it work?
 
@@ -14,7 +14,7 @@ I have found a *unoffical* Tempo API to fetch the color day of tomorrow. Everyda
 My script was tested on Proxmox VE 8.+ (Debian 12.x). It can works on some older versions of Proxmox VE or Debian but it haven't tested for.
 > ⚠ **You need** to be **root** user! 
 >
-> Make sure you have `curl`, `jq` and `at` installed on your machine. Otherwise you need to run `apt install curl jq at`.
+> Make sure you have `curl`, `jq`, `bc` and `at` installed on your machine. Otherwise you need to run `apt install curl jq bc at`.
 
 # Installation
 
@@ -30,8 +30,9 @@ My script was tested on Proxmox VE 8.+ (Debian 12.x). It can works on some older
 For the script can be scheduled at 12h and/or at the startup of the server, we need to modify the cronjobs file.
 
 1. Open the cronjobs editor by enter `crontab -e` command.
+> If you use Ubuntu Server, by default if you enter the `crontab -e` command, you get an error that the command is not found. So you need to install the `cron` package by running `apt install cron` as root user.
 
-2.Just add these two lines at the end of the cronjob file:
+2. Just add these two lines at the end of the cronjob file:
 
 ```
 0 12 * * * /usr/local/bin/tempo-autoshutdown.sh
